@@ -10,6 +10,11 @@ socket.addEventListener('message', (event) => {
       socket.send("anton\x0D")
       count++;
     }
+    else if(count==1){
+      console.log('Init Raw REPL')
+      socket.send("\x01");
+      count++;
+    }
     else{
       console.log('Message from server ', event.data);
       lastmes = event.data;
@@ -17,6 +22,7 @@ socket.addEventListener('message', (event) => {
     }
 });
 
-function sendstufftorobot(code){
+function sendcodetorobot(code){
+    console.log("hi")
     socket.send(code)
 }

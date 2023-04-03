@@ -9,7 +9,7 @@ Blockly.Python['print_text'] = function(block) {
     display = SH1106_I2C(128, 64, i2c, Pin(16), 0x3c)
     display.sleep(False)
     display.fill(0)
-    display.text('${text_text_string}', 0, 0, 1)
+    display.text('hi', 0, 0, 1)
     display.show();`
     
     return code;

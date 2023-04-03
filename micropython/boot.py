@@ -13,12 +13,12 @@ esp.osdebug(None)
 import gc
 gc.collect()
 
-ssid = 'Freddy Boiiiii'
-# password = 'Something'
+ssid = 'Freddy Boiii'
+password = 'Something'
 
 ap = network.WLAN(network.AP_IF)
 # ap.config(essid="<AP_NAME>", authmode=network.AUTH_WPA_WPA2_PSK, password="<password>")
-# ap.config(essid=ssid, authmode=network.AUTH_WPA_WPA2_PSK,password=password)
+ap.config(essid=ssid, authmode=network.AUTH_WPA_WPA2_PSK,password=password)
 ap.config(max_clients=5)
 ap.active(True)
 
