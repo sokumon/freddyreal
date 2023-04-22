@@ -8,3 +8,4 @@ def displaytext(text):
     display.sleep(False)
     display.fill(0)
     display.text(text, 0, 0, 1)
+    display.show()

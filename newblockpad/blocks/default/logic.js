@@ -361,8 +361,17 @@ var toolbox = {
         "contents":[
           {
             "kind":"block",
+            "type":"init_display"
+          },
+          {
+            "kind":"block",
             "type":"print_text"
-  
+          },{
+            "kind":"block",
+            "type":"display_text_left"
+          },{
+            "kind":"block",
+            "type":"display_varible"
           }
         ]
   

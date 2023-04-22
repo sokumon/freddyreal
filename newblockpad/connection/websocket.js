@@ -23,6 +23,11 @@ socket.addEventListener('message', (event) => {
 });
 
 function sendcodetorobot(code){
-    console.log("hi")
-    socket.send(code)
+
+}
+function sendcodetest(code){
+  socket.send(code)
+}
+function execute(){
+  socket.send("\x04")
 }
