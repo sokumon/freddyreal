@@ -2,16 +2,9 @@
 const url="ws://192.168.4.1:8266"
 const socket = new WebSocket(url)
 socket.binaryType = 'arraybuffer';
+console.log(socket.bufferedAmount)
 let count = 0 ;
 let raw_repl_trigger = "\x1B\x61"
-let play_button = document.getElementById("play")
-let mode 
-if(play_button === null){
-  mode = "dom"
-}else{
-  mode = "blockpad"
-  play_button.style.color= "red";
-}
 socket.addEventListener('close',function(){
   console.log("closing")
 })
@@ -19,16 +12,6 @@ socket.addEventListener('message', (event) => {
     if(count==0){
       console.log('Message from server ', event.data);
       socket.send("anton\x0D")
-      if(mode=== "dom"){
-        console.log("Draw On me")
-      }else{
-        play_button.style.color= "green";
-      }
-      count++;
-    }
-    else if(count==1){
-      console.log('Init Raw REPL')
-      socket.send("\x01");
       count++;
     }
     else{
@@ -41,8 +24,18 @@ socket.addEventListener('message', (event) => {
 function sendcodetorobot(code){
 
 }
-function sendcodetest(code){
-  socket.send(code)
+var start_but = document.getElementById("start")
+let linesofcode = []
+function sendold(code){
+    linesofcode = code.split("\n")
+    var enter_val="\x0D"
+    for (let i = 0; i < linesofcode.length; i++) {
+      linesofcode[i] = linesofcode[i].trim()
+      linesofcode[i]= linesofcode[i].concat(enter_val);
+    }
+    for (let i = 0; i < linesofcode.length ; i++) {
+      socket.send(linesofcode[i])
+    }
 }
 function execute(){
   console.log("executing")
